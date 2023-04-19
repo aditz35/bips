@@ -6,7 +6,7 @@
           Tim Ruffing <crypto@timruffing.de>
   Comments-Summary: No comments yet.
   Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0340
-  Status: Draft
+  Status: Final
   Type: Standards Track
   License: BSD-2-Clause
   Created: 2020-01-19
@@ -109,8 +109,9 @@ The following conventions are used, with constants as defined for [https://www.s
 ** The function ''bytes(P)'', where ''P'' is a point, returns ''bytes(x(P))''.
 ** The function ''int(x)'', where ''x'' is a 32-byte array, returns the 256-bit unsigned integer whose most significant byte first encoding is ''x''.
 ** The function ''has_even_y(P)'', where ''P'' is a point for which ''not is_infinite(P)'', returns ''y(P) mod 2 = 0''.
-** The function ''lift_x(x)'', where ''x'' is an integer in range ''0..p-1'', returns the point ''P'' for which ''x(P) = x''<ref>
-    Given a candidate X coordinate ''x'' in the range ''0..p-1'', there exist either exactly two or exactly zero valid Y coordinates. If no valid Y coordinate exists, then ''x'' is not a valid X coordinate either, i.e., no point ''P'' exists for which ''x(P) = x''. The valid Y coordinates for a given candidate ''x'' are the square roots of ''c = x<sup>3</sup> + 7 mod p'' and they can be computed as ''y = &plusmn;c<sup>(p+1)/4</sup> mod p'' (see [https://en.wikipedia.org/wiki/Quadratic_residue#Prime_or_prime_power_modulus Quadratic residue]) if they exist, which can be checked by squaring and comparing with ''c''.</ref> and ''has_even_y(P)'', or fails if no such point exists. The function ''lift_x(x)'' is equivalent to the following pseudocode:
+** The function ''lift_x(x)'', where ''x'' is a 256-bit unsigned integer, returns the point ''P'' for which ''x(P) = x''<ref>
+    Given a candidate X coordinate ''x'' in the range ''0..p-1'', there exist either exactly two or exactly zero valid Y coordinates. If no valid Y coordinate exists, then ''x'' is not a valid X coordinate either, i.e., no point ''P'' exists for which ''x(P) = x''. The valid Y coordinates for a given candidate ''x'' are the square roots of ''c = x<sup>3</sup> + 7 mod p'' and they can be computed as ''y = &plusmn;c<sup>(p+1)/4</sup> mod p'' (see [https://en.wikipedia.org/wiki/Quadratic_residue#Prime_or_prime_power_modulus Quadratic residue]) if they exist, which can be checked by squaring and comparing with ''c''.</ref> and ''has_even_y(P)'', or fails if ''x'' is greater than ''p-1'' or no such point exists. The function ''lift_x(x)'' is equivalent to the following pseudocode:
+*** Fail if ''x &ge; p''.
 *** Let ''c = x<sup>3</sup> + 7 mod p''.
 *** Let ''y = c<sup>(p+1)/4</sup> mod p''.
 *** Fail if ''c &ne; y<sup>2</sup> mod p''.
@@ -233,7 +234,7 @@ Adaptor signatures, beyond the efficiency and privacy benefits of encoding scrip
 
 === Blind Signatures ===
 
-A blind signature protocol is an interactive protocol that enables a signer to sign a message at the behest of another party without learning any information about the signed message or the signature. Schnorr signatures admit a very [https://www.math.uni-frankfurt.de/~dmst/research/papers/schnorr.blind_sigs_attack.2001.pdf simple blind signature scheme] which is however insecure because it's vulnerable to [https://www.iacr.org/archive/crypto2002/24420288/24420288.pdf Wagner's attack]. A known mitigation is to let the signer abort a signing session with a certain probability, and the resulting scheme can be [https://eprint.iacr.org/2019/877 proven secure under non-standard cryptographic assumptions].
+A blind signature protocol is an interactive protocol that enables a signer to sign a message at the behest of another party without learning any information about the signed message or the signature. Schnorr signatures admit a very [http://publikationen.ub.uni-frankfurt.de/files/4292/schnorr.blind_sigs_attack.2001.pdf simple blind signature scheme] which is however insecure because it's vulnerable to [https://www.iacr.org/archive/crypto2002/24420288/24420288.pdf Wagner's attack]. A known mitigation is to let the signer abort a signing session with a certain probability, and the resulting scheme can be [https://eprint.iacr.org/2019/877 proven secure under non-standard cryptographic assumptions].
 
 Blind Schnorr signatures could for example be used in [https://github.com/ElementsProject/scriptless-scripts/blob/master/md/partially-blind-swap.md Partially Blind Atomic Swaps], a construction to enable transferring of coins, mediated by an untrusted escrow agent, without connecting the transactors in the public blockchain transaction graph.
 
@@ -241,6 +242,12 @@ Blind Schnorr signatures could for example be used in [https://github.com/Elemen
 
 For development and testing purposes, we provide a [[bip-0340/test-vectors.csv|collection of test vectors in CSV format]] and a naive, highly inefficient, and non-constant time [[bip-0340/reference.py|pure Python 3.7 reference implementation of the signing and verification algorithm]].
 The reference implementation is for demonstration purposes only and not to be used in production environments.
+
+== Changelog ==
+
+To help implementors understand updates to this BIP, we keep a list of substantial changes.
+
+* 2022-08: Fix function signature of lift_x in reference code
 
 == Footnotes ==
 

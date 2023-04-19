@@ -440,7 +440,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Derivation scheme for P2WPKH based accounts
 | Pavol Rusnak
 | Informational
-| Draft
+| Final
 |-
 | [[bip-0085.mediawiki|85]]
 | Applications
@@ -483,6 +483,13 @@ Those proposing changes should consider that ultimately consent may rest with th
 | James Hilliard
 | Standard
 | Final
+|-
+| [[bip-0093.mediawiki|93]]
+| Applications
+| codex32: Checksummed SSSS-aware BIP32 seeds
+| Leon Olsson Curr, Pearlwort Sneed
+| Informational
+| Draft
 |-
 | [[bip-0098.mediawiki|98]]
 | Consensus (soft fork)
@@ -825,7 +832,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Peer-to-Peer Communication Encryption
 | Jonas Schnelli
 | Standard
-| Withdrawn
+| Replaced
 |- style="background-color: #cfffcf"
 | [[bip-0152.mediawiki|152]]
 | Peer Services
@@ -921,7 +928,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0179.mediawiki|179]]
 |
 | Name for payment recipient identifiers
-| Emil Engler, MarcoFalke, Luke Dashjr
+| Emil Engler, Luke Dashjr
 | Informational
 | Draft
 |- style="background-color: #ffcfcf"
@@ -980,6 +987,13 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Karl-Johan Alm
 | Standard
 | Draft
+|-
+| [[bip-0324.mediawiki|324]]
+| Peer Services
+| Version 2 P2P Encrypted Transport Protocol
+| Dhruv Mehta, Tim Ruffing, Jonas Schnelli, Pieter Wuille
+| Standard
+| Draft
 |- style="background-color: #ffffcf"
 | [[bip-0325.mediawiki|325]]
 | Applications
@@ -987,6 +1001,27 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Karl-Johan Alm, Anthony Towns
 | Standard
 | Proposed
+|-
+| [[bip-0326.mediawiki|326]]
+| Applications
+| Anti-fee-sniping in taproot transactions
+| Chris Belcher
+| Informational
+| Draft
+|-
+| [[bip-0327.mediawiki|327]]
+|
+| MuSig2 for BIP340-compatible Multi-Signatures
+| Jonas Nick, Tim Ruffing, Elliott Jin
+| Informational
+| Draft
+|-
+| [[bip-0329.mediawiki|329]]
+| Applications
+| Wallet Labels Export Format
+| Craig Raw
+| Informational
+| Draft
 |-
 | [[bip-0330.mediawiki|330]]
 | Peer Services
@@ -1008,40 +1043,47 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Suhas Daftuar
 | Standard
 | Draft
-|-
+|- style="background-color: #cfffcf"
 | [[bip-0340.mediawiki|340]]
 |
 | Schnorr Signatures for secp256k1
 | Pieter Wuille, Jonas Nick, Tim Ruffing
 | Standard
-| Draft
-|-
+| Final
+|- style="background-color: #cfffcf"
 | [[bip-0341.mediawiki|341]]
 | Consensus (soft fork)
 | Taproot: SegWit version 1 spending rules
 | Pieter Wuille, Jonas Nick, Anthony Towns
 | Standard
-| Draft
-|-
+| Final
+|- style="background-color: #cfffcf"
 | [[bip-0342.mediawiki|342]]
 | Consensus (soft fork)
 | Validation of Taproot Scripts
 | Pieter Wuille, Jonas Nick, Anthony Towns
 | Standard
-| Draft
-|- style="background-color: #ffffcf"
+| Final
+|- style="background-color: #cfffcf"
 | [[bip-0343.mediawiki|343]]
 | Consensus (soft fork)
 | Mandatory activation of taproot deployment
 | Shinobius, Michael Folkson
 | Standard
-| Proposed
+| Final
 |-
 | [[bip-0350.mediawiki|350]]
 | Applications
 | Bech32m format for v1+ witness addresses
 | Pieter Wuille
 | Standard
+| Draft
+|-
+| [[bip-0351.mediawiki|351]]
+| Applications
+| Private Payments
+| Alfred Hodler, Clark Moody
+| Informational
 | Draft
 |-
 | [[bip-0370.mediawiki|370]]
@@ -1055,6 +1097,13 @@ Those proposing changes should consider that ultimately consent may rest with th
 | Applications
 | Taproot Fields for PSBT
 | Andrew Chow
+| Standard
+| Draft
+|-
+| [[bip-0372.mediawiki|372]]
+| Applications
+| Pay-to-contract tweak fields for PSBT
+| Maxim Orlovsky
 | Standard
 | Draft
 |-
